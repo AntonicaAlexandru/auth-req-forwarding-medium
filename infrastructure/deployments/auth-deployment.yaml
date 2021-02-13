@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service-deployment
+  labels:
+    name: auth-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: auth-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: auth-service
+    spec:
+      containers:
+        - image: aantonica/forward-req:auth-service
+          name: auth-service
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9998
+      restartPolicy: Always
