@@ -35,10 +35,3 @@ public class AuthorizeRequestController {
     }
 
 }
-
-aantonica:auth-req-forwarding-medium alexantonica$ kubectl get svc
-        NAME           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
-        auth-service   NodePort    10.101.192.176   <none>        9998:30735/TCP   80m
-        doc-service    NodePort    10.96.127.182    <none>        9999:31458/TCP   80m
-        kubernetes     ClusterIP   10.96.0.1        <none>        443/TCP          3h43m
-        aantonica:auth-req-forwarding-medium alexantonica$
