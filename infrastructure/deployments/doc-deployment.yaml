@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: doc-service-deployment
+  labels:
+    name: doc-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: doc-service
+  template:
+    metadata:
+      labels:
+        name: doc-service
+    spec:
+      containers:
+        - image: aantonica/forward-req:doc-service
+          name: doc-service
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9999
+      restartPolicy: Always

@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: doc-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/auth-url: http://auth-service.default.svc.cluster.local:9998/authorize/request
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /doc/fetch
+        pathType: Prefix
+        backend:
+          service:
+            name: doc-service
+            port:
+              number: 9999
